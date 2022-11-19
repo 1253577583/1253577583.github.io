@@ -124,7 +124,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -159,6 +159,587 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/19/%E8%AE%A1%E7%BB%84%E5%AD%98%E5%82%A8%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YaoR">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YaoR">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | YaoR">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/19/%E8%AE%A1%E7%BB%84%E5%AD%98%E5%82%A8%E5%99%A8/" class="post-title-link" itemprop="url">计组存储器</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-11-19 10:36:25 / 修改时间：11:26:58" itemprop="dateCreated datePublished" datetime="2022-11-19T10:36:25+08:00">2022-11-19</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>唐朔飞计算机组成原理，第四章存储器  </p>
+<h3 id="4-1-概述"><a href="#4-1-概述" class="headerlink" title="4.1 概述"></a>4.1 概述</h3><p>按存储介质分类，可分为半导体存储器、磁表面存储器、磁芯存储器、光盘存储器。<br>按存取方式分类，可分为随机存储器、只读存储器、顺序存储器、直接存储器。<br>按在计算机中的作用分离，可分为主存储器、辅助存储器、缓冲存储器。  </p>
+<p>存储器性能指标，速度、容量和每位价格。<br>缓存-主存层次主要解决CPU和主存速度不匹配问题。<br>主存-辅存层次主要解决存储系统的容量问题。  </p>
+<h3 id="4-2主存储器"><a href="#4-2主存储器" class="headerlink" title="4.2主存储器"></a>4.2主存储器</h3><p>主存各存储单元的地址位置是由单元地址号来表示的。<br>地址总线用来指出存储单元的地址号。<br>计算机可按字寻址也可按字节寻址。  </p>
+<p>存储容量指主存存放二进制代码的总位数。<br>存储容量 &#x3D; 存储单元个数 X 存储字长  </p>
+<p>存储速度由存取时间和存取周期表示。<br>存取时间分为读出时间和写入时间。<br>存取周期指存储器进行连续两次独立存储器操作的最小间隔时间。  </p>
+<p>存储器带宽，表示单位时间内存储器存取的信息量。  </p>
+<p>线选法，用一根字选择线，直接选中一个存储单元的各位。<br>重合法，XY两方向的选择线，选择任意一位。  </p>
+<p>集中刷新，在规定的刷新周期内，对全部存储单元集中刷新。<br>分散刷新，对每行存储单元的刷新分散到每个存取周期完成。<br>异步刷新，每隔一段时间刷新一行，在刷新周期内完成刷新。  </p>
+<p>位拓展，指增加存储字长。<br>字拓展，指增加存储器字数量。<br>字位拓展，既增加存储器字数量，也增加存储字长。  </p>
+<p>CPU低位地址线与存储器芯片的地址线相连。<br>CPU高位地址线，或用于扩充，或用于片选。  </p>
+<p>必须对存储器芯片进行扩位，使其数据位数和CPU数据线数相等。  </p>
+<p>CPU读写命令线一般直接与存储器芯片读写控制端相连。  </p>
+<p>片选线，通过逻辑电路，产生有效的选择信号。  </p>
+<p>系统程序、标准子程序、常数使用ROM。  </p>
+<p>汉明码，编码距离越大，纠错检错能力越大。<br>添加检测位，分析奇偶校验，利用检测位进行纠错定位。  </p>
+<h3 id="4-3-高速缓冲存储器"><a href="#4-3-高速缓冲存储器" class="headerlink" title="4.3 高速缓冲存储器"></a>4.3 高速缓冲存储器</h3><p>程序访问的局部性，将近期要用到的程序或数据，提前从主存存入cache。<br>主存缓存都分为若干块，主存缓存块大小相同。<br>缓存地址分为块号和块内地址，主存地址也分为块号和块内地址。  </p>
+<p>平均访问时间使用cache命中率，对访问主存时间和访问cache时间进行加权平均。<br>访问效率，访问cache时间 &#x2F; 平均访问时间，表示cache的作用效果。  </p>
+<p>增大块长，由与局部性使命中率有提高。<br>过大的块长，会使缓存装入的有用数据少于被替换的有用数据。  </p>
+<p>写直达，写操作既写入cache，又写入主存。<br>写回法，写操作只写入cache，在cache替换时，再写回主存。<br>使用标志位来表示cache数据是否与主存一致。  </p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/18/%E8%AE%A1%E7%BB%84%E7%B3%BB%E7%BB%9F%E6%80%BB%E7%BA%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YaoR">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YaoR">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | YaoR">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/18/%E8%AE%A1%E7%BB%84%E7%B3%BB%E7%BB%9F%E6%80%BB%E7%BA%BF/" class="post-title-link" itemprop="url">计组系统总线</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-11-18 09:32:13 / 修改时间：15:18:02" itemprop="dateCreated datePublished" datetime="2022-11-18T09:32:13+08:00">2022-11-18</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>唐朔飞计算机组成原理，第三章系统总线。  </p>
+<h3 id="3-1-总线的基本概念"><a href="#3-1-总线的基本概念" class="headerlink" title="3.1 总线的基本概念"></a>3.1 总线的基本概念</h3><p>总线是共享的传输介质，由许多传输线组成，可串行或并行传输。  </p>
+<h3 id="3-2-总线的分类"><a href="#3-2-总线的分类" class="headerlink" title="3.2 总线的分类"></a>3.2 总线的分类</h3><p>片内总线，也就是CPU内部，寄存器之间的总线。  </p>
+<p>系统总线，CPU与主存，IO设备等大部件之间信息传输线。  </p>
+<p>系统总线又可以分成3类，数据总线，地址总线和控制总线。<br>数据总线，传递数据信息，是双向传输总线。<br>地址总线，用于指示数据总线上，源数据或目的数据，在主存单元或IO设备的地址。<br>地址总线上的信息由CPU单向传输，地址线位数与存储单元个数有关。<br>地址线和数据线是所有部件共享的，决定当前由哪个部件使用总线，需要控制信息。<br>控制总线，用来传输控制信号的线路，既有CPU发出的控制信号，也有部件发出的中断请求。  </p>
+<p>通信总线，用于计算机系统之间，或与仪表盘之类的通信。<br>串行指一位一位地，按顺序分时传送。<br>并行指在多条并行的线路上，同时由源传送到目的地。  </p>
+<h3 id="3-3-总线特性和性能指标"><a href="#3-3-总线特性和性能指标" class="headerlink" title="3.3 总线特性和性能指标"></a>3.3 总线特性和性能指标</h3><p>机械特性，机械连接方面的性能，几何尺寸，形状，插头插座的标准。<br>电气特性，信号的电平范围，是高电平有效还是低电平有效。<br>功能特性，地址总线用来指出地址码，数据总线用来传递数据，控制总线发出控制信号。<br>时间特性，总线中的任一根线在什么时候有效，信号互相存在时序关系。  </p>
+<p>总线宽度，通常指数据总线的根数，8位、16位、32位、64位。<br>总线带宽，总线的数据传输率，每秒传输的字节数，工作频率 X 总线宽度。  </p>
+<p>总线标准，解决系统、模块、设备之间的适配问题。  </p>
+<h3 id="3-4-总线结构"><a href="#3-4-总线结构" class="headerlink" title="3.4 总线结构"></a>3.4 总线结构</h3><p>单总线结构，所有的传送通过一组总线，很容易出现传输瓶颈。<br>双总线结构，将速度较低的IO设备分离出来，使用通道和IO总线连接。<br>三总线结构，包括IO总线，主存总线，DMA总线。<br>三总线结构，包括局部总线，系统总线，拓展总线。<br>四总线结构，包括局部总线，系统总线，高速总线，拓展总线。 </p>
+<p>PCI总线，将高速、高性能的外设，尽量靠近CPU总线。<br>通过PCI桥与CPU总线相连，驱动能力不足可采用多层结构。（zz不回答我的疑问）   </p>
+<h3 id="3-5-总线控制"><a href="#3-5-总线控制" class="headerlink" title="3.5 总线控制"></a>3.5 总线控制</h3><p>总线上的设备，依据有无控制总线的能力，划分为主设备和从设备。<br>多个主设备同时要使用总线时，就需要总线判优控制。  </p>
+<p>链式查询，BS总线忙、BR总线请求、BG总线同意。<br>计时器定时查询，从0开始计数，或循环计数，增加设备地址线，设备地址与计数值一致，则获得总线使用权。<br>独立请求方式，每台设备都有BR、BG，总线控制部件进行排队。  </p>
+<p>总线通信控制，完成一次总线操作被称为总线周期。  </p>
+<p>申请分配阶段，主设备提出申请，经仲裁机构决定下一传输周期的使用权。<br>寻址阶段，主设备发送地址和有关命令，启动参与本次操作的从模块。<br>传数阶段，主设备和从设备进行数据交换，数据从源发出，流入目的模块。<br>结束阶段，主设备信息从总线上撤出，让出总线使用权。  </p>
+<h3 id="习题指导"><a href="#习题指导" class="headerlink" title="习题指导"></a>习题指导</h3><p>USB是串行总线，ISA是系统总线，PCIE是串行传输。<br>中断信号通过数据线传输，突发传输方式需要一次地址时间。<br>注意双向传输带宽要乘2，注意题目给的公式的具体细节。<br>局部总线，指在系统外为两个以上模块提供高速传输信息通道。<br>突发工作方式，被传送的数据在主存中连续存放，访问时只需给出第一个数据的地址。<br>波特率指单位时间传输的位数，比特率指单位时间传输的有效位数。  </p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/16/%E8%AE%A1%E7%BB%84%E8%80%83%E8%AF%95%E9%A2%84%E6%B5%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YaoR">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YaoR">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | YaoR">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/16/%E8%AE%A1%E7%BB%84%E8%80%83%E8%AF%95%E9%A2%84%E6%B5%8B/" class="post-title-link" itemprop="url">计组考试预测</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-11-16 16:41:06 / 修改时间：20:23:28" itemprop="dateCreated datePublished" datetime="2022-11-16T16:41:06+08:00">2022-11-16</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>差不多离考试还有10天吧，想写写计算机组成原理考试预测。  </p>
+<ul>
+<li>3类系统总线的传输方向问题<br>数据总线是双向传输，地址总线是CPU单向传输，控制总线 CPU单向发出控制信号，但同时接收设备的中断请求。  </li>
+<li>总线中各种信号互相存在时序关系  </li>
+<li>PCI总线驱动能力不足，采用多层结构<br>为什么呢？为什么呢？</li>
+<li>异步串行传送中，去除附加位，就变为同步传送<br>什么意思？什么意思？</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/15/%E8%AE%A1%E7%AE%97%E5%BB%BA%E6%A8%A1%E5%AD%A6%E4%B9%A0%E6%83%B3%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YaoR">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YaoR">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | YaoR">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/15/%E8%AE%A1%E7%AE%97%E5%BB%BA%E6%A8%A1%E5%AD%A6%E4%B9%A0%E6%83%B3%E6%B3%95/" class="post-title-link" itemprop="url">计算建模学习想法</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-11-15 11:25:24 / 修改时间：11:43:30" itemprop="dateCreated datePublished" datetime="2022-11-15T11:25:24+08:00">2022-11-15</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>我们的敌人究竟是谁，是一个很值得思考的问题。<br>在一切关系的背后掩藏着什么呢，我只能选择信任和依赖自己的感受。  </p>
+<p>学习最难的就是资料和高手的指导。<br>而计算建模没有学习资料也没有所谓的指导。<br>既然这样，我只能选择做我自己的教练，去寻找可能的零碎资源。  </p>
+<p>既没有课程的统一脉络，也没有合理可能的教材资源。<br>我所能看到的只有零散杂乱的PPT语句，课堂也不过是PPT阅读和名词解释。<br>学生自然是与我无关的，完成教学任务完成指标才是当务之急。  </p>
+<p>孜孜以求的历史正确的道路绝不应该是这样的形式。<br>似乎接收了恩惠?还是一种可能的维稳策略。<br>站在高位的所有者，无论如何是没有输的结局的吧。  </p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/05/%E5%AD%99%E5%B0%9A%E9%A6%99-%E8%B7%9D%E7%A6%BB%E7%A7%BB%E9%80%9F%E8%8A%82%E5%A5%8F%E7%9A%84%E7%BE%8E/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YaoR">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YaoR">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | YaoR">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/05/%E5%AD%99%E5%B0%9A%E9%A6%99-%E8%B7%9D%E7%A6%BB%E7%A7%BB%E9%80%9F%E8%8A%82%E5%A5%8F%E7%9A%84%E7%BE%8E/" class="post-title-link" itemprop="url">孙尚香-距离移速节奏的美</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-11-05 10:35:12" itemprop="dateCreated datePublished" datetime="2022-11-05T10:35:12+08:00">2022-11-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-11-15 11:31:54" itemprop="dateModified" datetime="2022-11-15T11:31:54+08:00">2022-11-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/king-of-glory/" itemprop="url" rel="index"><span itemprop="name">king of glory</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>孙尚香强化普攻加移速，配合减速破甲，以及远距离的大招。<br>真真正正的做到了，中距离完善的拉扯收割机制。  </p>
+<p>遇到马克波罗，建议多消耗打状态，就躲在小兵身后，直接就处于不败之地。<br>等马克波罗四级，而且他状态还不错，就要小心了。  </p>
+<p>遇到花木兰，就要格外小心草丛，即使是自家野区也要小心，没有净化被打出沉默只有死路一条。  </p>
+<p>对于技能带闪现还是净化，我觉得很难说。<br>今天打不过的原因可能是目标不明确，对孙尚香的了解不足。<br>同时主动性不够，也会丧失很多机会。<br>最后犯了注意力分散得错误，小地图观察还需要训练。  </p>
+<p>遇到对面辅助帮忙怎么办呢，其实有时候就是赢不了的。  </p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/17/Cyberpunk-Edgerunner/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YaoR">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YaoR">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | YaoR">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/10/17/Cyberpunk-Edgerunner/" class="post-title-link" itemprop="url">Cyberpunk-Edgerunner</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-10-17 11:06:46" itemprop="dateCreated datePublished" datetime="2022-10-17T11:06:46+08:00">2022-10-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-11-18 09:43:41" itemprop="dateModified" datetime="2022-11-18T09:43:41+08:00">2022-11-18</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>从10月1日观看至今已有两周多，每当听到soundTrace仍旧萦绕一丝忧伤。<br>在时间洗涤之下，依旧在我心中留下记忆的片段，总还是有些内核在其中。<br>虽然存在18+镜头以及世界架构的不合理之处，但瑕不掩瑜，是令人为之振奋的好作品。  </p>
+<p>Cyberpunk世界里，已经没有人的存在了，恰如我们世界可能的发展趋势。<br>普通民众通过加装义体来强化肉身，实现生物上人到非人的转变。<br>这种以近乎自残的方式获得力量，逐渐积累起精神上的折磨，直至最后的疯狂。<br>在夜之城流动的只是资本，人只是流动中的附庸。<br>相对还算不错的公司上层，可惜通道已然封闭，是普通人不可触及的彼岸。<br>公司上层又能如何呢，上层头上还有上层。</p>
+<p>David就是这样出于普通家庭的普通青年，家庭为了他能成为公司上层做出很多牺牲。<br>不过所谓牺牲，也无非就是富人眼中的玩笑罢了。<br>在生活所迫之下，自然而然的就接触到黑科技，也就是义体医生。<br>所做的这一切，无非就是贫苦人民所能做的全部挣扎吧。<br>看似在超梦中获得刺激的观感体验，不如说是以此来逃避现实的痛苦。<br>如果就这样照常发展，似乎也能够得到还不错的结局。<br>但现实怎么会让你一帆风顺呢？  </p>
+<p>不出意料的母亲死于街头帮派斗争，而且不是直接死于斗争，大致是死于医疗队的见死不救上吧。<br>在这个瞬间，David开始转变，认清了资本的残酷，也走上了放弃自己的道路。  </p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/15/%E8%89%BE%E7%90%B3-%E7%8B%AC%E7%89%B9%E7%9A%84%E6%B3%95%E4%BC%A4%E5%B0%84%E6%89%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YaoR">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YaoR">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | YaoR">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/10/15/%E8%89%BE%E7%90%B3-%E7%8B%AC%E7%89%B9%E7%9A%84%E6%B3%95%E4%BC%A4%E5%B0%84%E6%89%8B/" class="post-title-link" itemprop="url">艾琳-独特的法伤射手</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-10-15 14:24:28" itemprop="dateCreated datePublished" datetime="2022-10-15T14:24:28+08:00">2022-10-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-10-27 11:19:35" itemprop="dateModified" datetime="2022-10-27T11:19:35+08:00">2022-10-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/king-of-glory/" itemprop="url" rel="index"><span itemprop="name">king of glory</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>艾琳目前是唯一的法伤射手，机制上绝对克制虞姬。  </p>
+<p>因为存在移除减速效果和单体爆发的机制，所以艾琳是典型的拉扯型打法。<br>一般来说技能带狂暴，倘若没有狂暴，对线会变得非常弱！  </p>
+<p>面对黄忠，建议慢慢消耗，伺机而动。<br>如果是伽罗，尽量少被消耗，在这种时候艾琳的优势在于存活率。<br>遇到马克这种，不知道拿什么去找机会，只能被动挨打，或者直接把马克压死。  </p>
+<p>感觉艾琳弱势在于主动性很差，面对兰陵王毫无还手之力。<br>而后期如果不做法强装备，艾琳的输出又会不够，除了强化A，其他伤害都是单体。  </p>
+<p>在中期艾琳有满大和狂暴可以适当的寻找机会。<br>遇到什么张良、干将啊，艾琳很难有还手之力。  </p>
+<p>所以艾琳打长手不行，打爆发也不行，打回复好像也挺难受，遇到强开团直接被吊打。<br>艾琳理所应当的成为了混子射手，保保KDA混混输出还是可以的。  </p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -436,320 +1017,9 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YaoR">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="YaoR">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | YaoR">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">计算机运算方法</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2022-09-21 21:43:08 / 修改时间：23:26:28" itemprop="dateCreated datePublished" datetime="2022-09-21T21:43:08+08:00">2022-09-21</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>唐朔飞计组的第六章，计算机运算方法</p>
-<h2 id="补码乘法的证明"><a href="#补码乘法的证明" class="headerlink" title="补码乘法的证明"></a>补码乘法的证明</h2><p>补码一位乘的运算方法，假设是 x * y ，我们该怎么理解呢？  </p>
-<p>首先分情况讨论： 把 y 分为正数和负数两种情形。<br>意识到补码的乘法其实是原码运算的模拟，什么意思呢？<br>原码乘法结果的补码 <strong>恰好</strong> 是补码乘法的结果。  </p>
-<p>补码运算，就是把符号位带入运算，结果的正负和溢出单独判断。<br>用原码表示补码，得到补码运算的结果。<br>证明就是，寻找使结果为 <strong>原码运算结果补码</strong> 的过程。  </p>
-<h2 id="补码运算过程采用补码规则"><a href="#补码运算过程采用补码规则" class="headerlink" title="补码运算过程采用补码规则"></a>补码运算过程采用补码规则</h2><p>比如补码移位和原码移位规则不同，这是为什么呢？<br>补码乘法需要与对应原码保持一致，补码右移规则来源于原码右移。<br>负数原码右移补0 ，相应的补码就是补1 ，应为“各位取反，末位加一”。  </p>
-<h2 id="校正法补码乘取双符号位"><a href="#校正法补码乘取双符号位" class="headerlink" title="校正法补码乘取双符号位"></a>校正法补码乘取双符号位</h2><p>双符号可以提供更多的信息，在最后一步的时候，在移位之前。<br>很有可能结果绝对值大于1，双符号位可以看出这点，而不改变符号位。  </p>
-<p>最高位是符号位，在运算中符号位决定我们移位的方式。<br>对于负数绝对值大于1时，可以看成<strong>1</strong>1.000000，其中<strong>1</strong>是符号位。  </p>
-<p>所以说，补码运算环环相扣，不理解补码加减法，在这里会遇到困难的。   </p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/13/%E7%8E%8B%E8%80%85%E8%8D%A3%E8%80%80%E4%B8%AD%E8%B7%AF%E5%88%86%E6%9E%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YaoR">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="YaoR">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | YaoR">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/13/%E7%8E%8B%E8%80%85%E8%8D%A3%E8%80%80%E4%B8%AD%E8%B7%AF%E5%88%86%E6%9E%90/" class="post-title-link" itemprop="url">王者荣耀中路分析</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2022-09-13 18:17:51 / 修改时间：20:31:54" itemprop="dateCreated datePublished" datetime="2022-09-13T18:17:51+08:00">2022-09-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/king-of-glory/" itemprop="url" rel="index"><span itemprop="name">king of glory</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>中路是王者荣耀中比较简单、上手较快的位置。<br>那么新手玩家该如何理解中路，如何玩好中路呢？</p>
-<h2 id="为什么需要中路"><a href="#为什么需要中路" class="headerlink" title="为什么需要中路"></a>为什么需要中路</h2><p>王者荣耀基本伤害分为三类物理伤害、法术伤害、真实伤害。<br>通常来说，中路是法术伤害的主要提供者，大法师能在前中期产生很好的伤害效果。<br>典型代表：炸弹猫、嬴政、干将莫邪  </p>
-<p>通常对局需要的不仅仅是伤害，还需要辅助和控制来保护队友和限制对手。<br>中单是辅助以外的很好补充，提供团队需要的控制和控场效果。<br>典型代表：西施、王昭君、奕星  </p>
-<p>比较强力的爆发中单，我们一般称之为法刺，也就是法术刺客。<br>刺客存在的目的，是限制敌方输出位，同时为团队创造机会，通常上手比较难。<br>典型代表：不知火舞、上官婉儿  </p>
-<p>最后是法术核心，核心就是团队提供主力输出的位置。<br>通常核心需要有一定经济基础，也就是需要装备才能打出高伤害。<br>在装备没有成型之前，核心的伤害不足以支撑团队需求。<br>典型代表：貂蝉、安琪拉、妲己</p>
-<h2 id="中路工具人玩法"><a href="#中路工具人玩法" class="headerlink" title="中路工具人玩法"></a>中路工具人玩法</h2><p>我拿王昭君举例，王昭君技能附带减速和冰冻效果，被动护盾减攻速。<br>但是清线较慢，很难拿到线权，对线时建议技能用来消耗对面中路。<br>等到四级后，可以直接去发育路，跟在射手后面，建议蹲在草丛里。</p>
-<p>不要离射手过近，站在射手后面或侧面（安全侧），保证敌方不能同时攻击你和射手。<br>等对面上来打射手的时候，往射手身上放技能，同时注意位置。<br>没有射手，其他位置也是同理。  </p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/13/new-post/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YaoR">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="YaoR">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | YaoR">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/13/new-post/" class="post-title-link" itemprop="url">Welcome New Life</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2022-09-13 16:32:32 / 修改时间：17:06:58" itemprop="dateCreated datePublished" datetime="2022-09-13T16:32:32+08:00">2022-09-13</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>welocme to my blog , if you have any problem.<br>I will try my best to help you</p>
-<p>Thank you! My younger female cousin.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/13/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="YaoR">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="YaoR">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | YaoR">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/13/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-09-13 15:24:12" itemprop="dateCreated datePublished" datetime="2022-09-13T15:24:12+08:00">2022-09-13</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 </div>
   </main>

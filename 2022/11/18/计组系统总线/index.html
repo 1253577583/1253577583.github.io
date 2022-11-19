@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="唐朔飞计算机组成原理，第三章系统总线。   3.1 总线的基本概念总线是共享的传输介质，由许多传输线组成，可串行或并行传输。   3.2 总线的分类片内总线，也就是CPU内部，寄存器之间的总线。   系统总线，CPU与主存，IO设备等大部件之间信息传输线。   系统总线又可以分成3类，数据总线，地址总线和控制总线。数据总线，传递数据信息，是双向传输总线。地址总线，用于指示数据总线上，源数据或目的数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计组系统总线">
+<meta property="og:url" content="http://example.com/2022/11/18/%E8%AE%A1%E7%BB%84%E7%B3%BB%E7%BB%9F%E6%80%BB%E7%BA%BF/index.html">
+<meta property="og:site_name" content="YaoR">
+<meta property="og:description" content="唐朔飞计算机组成原理，第三章系统总线。   3.1 总线的基本概念总线是共享的传输介质，由许多传输线组成，可串行或并行传输。   3.2 总线的分类片内总线，也就是CPU内部，寄存器之间的总线。   系统总线，CPU与主存，IO设备等大部件之间信息传输线。   系统总线又可以分成3类，数据总线，地址总线和控制总线。数据总线，传递数据信息，是双向传输总线。地址总线，用于指示数据总线上，源数据或目的数">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-11-18T01:32:13.000Z">
+<meta property="article:modified_time" content="2022-11-18T07:18:02.946Z">
+<meta property="article:author" content="YaoR">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/11/18/%E8%AE%A1%E7%BB%84%E7%B3%BB%E7%BB%9F%E6%80%BB%E7%BA%BF/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/11/18/%E8%AE%A1%E7%BB%84%E7%B3%BB%E7%BB%9F%E6%80%BB%E7%BA%BF/","path":"2022/11/18/计组系统总线/","title":"计组系统总线"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>计组系统总线 | YaoR</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">YaoR</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E6%80%BB%E7%BA%BF%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">3.1 总线的基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E6%80%BB%E7%BA%BF%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text">3.2 总线的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E6%80%BB%E7%BA%BF%E7%89%B9%E6%80%A7%E5%92%8C%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="nav-number">3.</span> <span class="nav-text">3.3 总线特性和性能指标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-%E6%80%BB%E7%BA%BF%E7%BB%93%E6%9E%84"><span class="nav-number">4.</span> <span class="nav-text">3.4 总线结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-%E6%80%BB%E7%BA%BF%E6%8E%A7%E5%88%B6"><span class="nav-number">5.</span> <span class="nav-text">3.5 总线控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B9%A0%E9%A2%98%E6%8C%87%E5%AF%BC"><span class="nav-number">6.</span> <span class="nav-text">习题指导</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">YaoR</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/18/%E8%AE%A1%E7%BB%84%E7%B3%BB%E7%BB%9F%E6%80%BB%E7%BA%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="YaoR">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YaoR">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="计组系统总线 | YaoR">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计组系统总线
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-11-18 09:32:13 / 修改时间：15:18:02" itemprop="dateCreated datePublished" datetime="2022-11-18T09:32:13+08:00">2022-11-18</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>唐朔飞计算机组成原理，第三章系统总线。  </p>
+<h3 id="3-1-总线的基本概念"><a href="#3-1-总线的基本概念" class="headerlink" title="3.1 总线的基本概念"></a>3.1 总线的基本概念</h3><p>总线是共享的传输介质，由许多传输线组成，可串行或并行传输。  </p>
+<h3 id="3-2-总线的分类"><a href="#3-2-总线的分类" class="headerlink" title="3.2 总线的分类"></a>3.2 总线的分类</h3><p>片内总线，也就是CPU内部，寄存器之间的总线。  </p>
+<p>系统总线，CPU与主存，IO设备等大部件之间信息传输线。  </p>
+<p>系统总线又可以分成3类，数据总线，地址总线和控制总线。<br>数据总线，传递数据信息，是双向传输总线。<br>地址总线，用于指示数据总线上，源数据或目的数据，在主存单元或IO设备的地址。<br>地址总线上的信息由CPU单向传输，地址线位数与存储单元个数有关。<br>地址线和数据线是所有部件共享的，决定当前由哪个部件使用总线，需要控制信息。<br>控制总线，用来传输控制信号的线路，既有CPU发出的控制信号，也有部件发出的中断请求。  </p>
+<p>通信总线，用于计算机系统之间，或与仪表盘之类的通信。<br>串行指一位一位地，按顺序分时传送。<br>并行指在多条并行的线路上，同时由源传送到目的地。  </p>
+<h3 id="3-3-总线特性和性能指标"><a href="#3-3-总线特性和性能指标" class="headerlink" title="3.3 总线特性和性能指标"></a>3.3 总线特性和性能指标</h3><p>机械特性，机械连接方面的性能，几何尺寸，形状，插头插座的标准。<br>电气特性，信号的电平范围，是高电平有效还是低电平有效。<br>功能特性，地址总线用来指出地址码，数据总线用来传递数据，控制总线发出控制信号。<br>时间特性，总线中的任一根线在什么时候有效，信号互相存在时序关系。  </p>
+<p>总线宽度，通常指数据总线的根数，8位、16位、32位、64位。<br>总线带宽，总线的数据传输率，每秒传输的字节数，工作频率 X 总线宽度。  </p>
+<p>总线标准，解决系统、模块、设备之间的适配问题。  </p>
+<h3 id="3-4-总线结构"><a href="#3-4-总线结构" class="headerlink" title="3.4 总线结构"></a>3.4 总线结构</h3><p>单总线结构，所有的传送通过一组总线，很容易出现传输瓶颈。<br>双总线结构，将速度较低的IO设备分离出来，使用通道和IO总线连接。<br>三总线结构，包括IO总线，主存总线，DMA总线。<br>三总线结构，包括局部总线，系统总线，拓展总线。<br>四总线结构，包括局部总线，系统总线，高速总线，拓展总线。 </p>
+<p>PCI总线，将高速、高性能的外设，尽量靠近CPU总线。<br>通过PCI桥与CPU总线相连，驱动能力不足可采用多层结构。（zz不回答我的疑问）   </p>
+<h3 id="3-5-总线控制"><a href="#3-5-总线控制" class="headerlink" title="3.5 总线控制"></a>3.5 总线控制</h3><p>总线上的设备，依据有无控制总线的能力，划分为主设备和从设备。<br>多个主设备同时要使用总线时，就需要总线判优控制。  </p>
+<p>链式查询，BS总线忙、BR总线请求、BG总线同意。<br>计时器定时查询，从0开始计数，或循环计数，增加设备地址线，设备地址与计数值一致，则获得总线使用权。<br>独立请求方式，每台设备都有BR、BG，总线控制部件进行排队。  </p>
+<p>总线通信控制，完成一次总线操作被称为总线周期。  </p>
+<p>申请分配阶段，主设备提出申请，经仲裁机构决定下一传输周期的使用权。<br>寻址阶段，主设备发送地址和有关命令，启动参与本次操作的从模块。<br>传数阶段，主设备和从设备进行数据交换，数据从源发出，流入目的模块。<br>结束阶段，主设备信息从总线上撤出，让出总线使用权。  </p>
+<h3 id="习题指导"><a href="#习题指导" class="headerlink" title="习题指导"></a>习题指导</h3><p>USB是串行总线，ISA是系统总线，PCIE是串行传输。<br>中断信号通过数据线传输，突发传输方式需要一次地址时间。<br>注意双向传输带宽要乘2，注意题目给的公式的具体细节。<br>局部总线，指在系统外为两个以上模块提供高速传输信息通道。<br>突发工作方式，被传送的数据在主存中连续存放，访问时只需给出第一个数据的地址。<br>波特率指单位时间传输的位数，比特率指单位时间传输的有效位数。  </p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/11/16/%E8%AE%A1%E7%BB%84%E8%80%83%E8%AF%95%E9%A2%84%E6%B5%8B/" rel="prev" title="计组考试预测">
+                  <i class="fa fa-chevron-left"></i> 计组考试预测
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/11/19/%E8%AE%A1%E7%BB%84%E5%AD%98%E5%82%A8%E5%99%A8/" rel="next" title="计组存储器">
+                  计组存储器 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">YaoR</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
